@@ -1,11 +1,16 @@
-<app-header></app-header>
+<app-header (selectedPage)="directToPage($event)"></app-header>
 <div class="container">
   <div class="row">
     <div class="col-md-12">
       <h1>Hello there</h1>
       <hr>
-      <app-recipes></app-recipes>
-      <app-shopping-list></app-shopping-list>
+
+      <app-recipes *ngIf="selectedPage === 1 else toShoppingList"></app-recipes>
+
+      <ng-template #toShoppingList>
+        <app-shopping-list></app-shopping-list>
+      </ng-template>
+      
       </div>
   </div>
 </div>
