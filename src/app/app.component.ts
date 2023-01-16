@@ -12,7 +12,7 @@ export class AppComponent {
 
   constructor(private titleService:Title) {
     this.titleService.setTitle("Angular Project1");
-    this.selectedPage = 2;
+    this.selectedPage = 1;
   }
 
   directToPage(page : {type : string}){

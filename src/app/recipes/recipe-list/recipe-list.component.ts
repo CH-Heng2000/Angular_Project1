@@ -1,22 +1,22 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 
 import { Recipe } from '../recipe.model'
-
+import { RecipeService } from '../recipe.service';
 @Component({
   selector: 'app-recipe-list',
   templateUrl: './recipe-list.component.html',
 })
 export class RecipeListComponent {
 
-  recipe_list: Recipe[] = [];
-  @Output() recipe_selected = new EventEmitter<Recipe>()
-  
-  constructor(){
-    this.recipe_list.push(new Recipe("Dawn","A weird pizza","https://static.toiimg.com/thumb/53110049.cms?width=1200&height=900"))
-    this.recipe_list.push(new Recipe("Dawn2","A weird pizza2","https://static.toiimg.com/thumb/53110049.cms?width=1200&height=900")) 
+  recipe_list: Recipe[] = []
+
+  constructor(private recipeService : RecipeService){}
+
+  ngOnInit(){
+    this.recipe_list = this.recipeService.getRecipes();
   }
 
   getRecipe(recipeParam : Recipe){
-    this.recipe_selected.emit(recipeParam)
+    this.recipeService.recipe_selected.emit(recipeParam)
   }
 }

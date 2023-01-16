@@ -2,9 +2,6 @@
 <div class="container">
   <div class="row">
     <div class="col-md-12">
-      <h1>Hello there</h1>
-      <hr>
-
       <app-recipes *ngIf="selectedPage === 1 else toShoppingList"></app-recipes>
 
       <ng-template #toShoppingList>
